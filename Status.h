@@ -14,6 +14,8 @@
 // 每次扩容的大小
 #define INCREMENT 10
 
+typedef int ElemType;
+
 // 返回状态
 typedef enum {
     OK,

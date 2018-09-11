@@ -55,3 +55,10 @@ dkms.conf
 *.cbp 
 *.depend
 *.layout
+
+cmake-build-debug/
+.idea/
+CMakeLists.txt
+.idea/codeStyles/Project.xml
+.idea/encodings.xml
+.idea/vcs.xml

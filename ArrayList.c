@@ -16,7 +16,7 @@
  * In           : 线性表指针
  * Out          : 状态
  */
-Status Init(ArrayList *L)
+Status ArrayList_Init(ArrayList *L)
 {
     // 分配内存空间
     L->elems = (ElemType *)malloc(sizeof(ElemType) * CAPACITY);
@@ -34,9 +34,9 @@ Status Init(ArrayList *L)
  * In           : 线性表指针，待插入元素
  * Out          : 状态
  */
-Status Append(ArrayList *L, ElemType e)
+Status ArrayList_Append(ArrayList *L, ElemType e)
 {
-    return Insert(L, L->len, e);
+    return ArrayList_Insert(L, L->len, e);
 }
 
 /*
@@ -46,14 +46,14 @@ Status Append(ArrayList *L, ElemType e)
  * In           : 线性表指针，待插入位置，待插入元素
  * Out          : 状态
  */
-Status Insert(ArrayList *L, int pos, ElemType e)
+Status ArrayList_Insert(ArrayList *L, int pos, ElemType e)
 {
     ElemType * new_elems;
 
     // 判断位置是否合法
     if (pos < 0 || pos > L->len) return OUT_OF_RANGE;
 
-    if (L->elems == NULL) Init(L);
+    if (L->elems == NULL) ArrayList_Init(L);
 
     // 扩容
     if (L->len >= L->size)
@@ -86,7 +86,7 @@ Status Insert(ArrayList *L, int pos, ElemType e)
  * In           : 线性表指针，待删除位置
  * Out          : 状态
  */
-Status Delete(ArrayList *L, int pos)
+Status ArrayList_Delete(ArrayList *L, int pos)
 {
     // 判断位置是否合法
     if (pos < 0 || pos >= L->len) return OUT_OF_RANGE;
@@ -108,7 +108,7 @@ Status Delete(ArrayList *L, int pos)
  * In           : 线性表，位置，保存该元素的变量
  * Out          : 状态
  */
-Status Get(ArrayList L, int pos, ElemType *e)
+Status ArrayList_Get(ArrayList L, int pos, ElemType *e)
 {
     // 判断位置是否合法
     if (pos < 0 || pos >= L.len) return OUT_OF_RANGE;
@@ -122,7 +122,7 @@ Status Get(ArrayList L, int pos, ElemType *e)
  * In           : 线性表指针，位置，待设置值
  * Out          : 状态
  */
-Status Set(ArrayList *L, int pos, ElemType e)
+Status ArrayList_Set(ArrayList *L, int pos, ElemType e)
 {
     // 判断位置是否合法
     if (pos < 0 || pos >= L->len) return OUT_OF_RANGE;
@@ -136,7 +136,7 @@ Status Set(ArrayList *L, int pos, ElemType e)
  * In           : 线性表，待查找元素
  * Out          : 状态
  */
-int Find(ArrayList L, ElemType e)
+int ArrayList_Find(ArrayList L, ElemType e)
 {
     for (int i = 0; i < L.len; ++i)
     {
@@ -151,7 +151,7 @@ int Find(ArrayList L, ElemType e)
  * In           : 线性表指针
  * Out          : void
  */
-void Clear(ArrayList *L)
+void ArrayList_Clear(ArrayList *L)
 {
     if (L->elems) free(L->elems);
     L->elems = NULL;
@@ -165,10 +165,9 @@ void Clear(ArrayList *L)
  * In           : 线性表
  * Out          : true / false
  */
-bool Is_Empty(ArrayList L)
+bool ArrayList_Is_Empty(ArrayList L)
 {
-    if (L.len) return true;
-    return false;
+    return L.len ? true : false;
 }
 
 /*
@@ -177,7 +176,7 @@ bool Is_Empty(ArrayList L)
  * In           : 线性表
  * Out          : 线性表的长度
  */
-int Length(ArrayList L)
+int ArrayList_Length(ArrayList L)
 {
     return L.len;
 }
@@ -187,26 +186,11 @@ int Length(ArrayList L)
  * Description  :
  * In           : 线性表
  */
-void Traverse(ArrayList L)
+void ArrayList_Traverse(ArrayList L)
 {
-    int len = 11 + 3 * L.len;
-    for (int i = 0; i < len; ++i)
-        printf("-");
+    printf("| ");
+    for(int i = 0; i < L.len; ++i)
+        printf("%d(%d) | ", L.elems[i], i);
 
-    // TODO 判断元素的位数
-    printf("\n|position |");
-    for (int i = 0; i < L.len; ++i)
-    {
-        printf("%2d|", i);
-    }
-    //打印长度
-    printf("\n|list (%2d)|", L.len);
-    for (int i = 0; i < L.len; ++i)
-    {
-        printf("%2d|", L.elems[i]);
-    }
     printf("\n");
-    for (int i = 0; i < len; ++i)
-        printf("-");
-    printf("\n\n");
 }
