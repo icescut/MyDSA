@@ -9,6 +9,7 @@
 #ifndef LINKEDLIST_H_INCLUDED
 #define LINKEDLIST_H_INCLUDED
 
+#include <stdbool.h>
 #include "Status.h"
 
 typedef struct Node
@@ -29,14 +30,29 @@ Status LinkedList_Init(LinkedList *L);
 // 插入
 Status LinkedList_Insert(LinkedList *L, int i, ElemType e);
 
+// 插入第一个元素
+Status LinkedList_InsertFirst(LinkedList *L, ElemType e);
+
 // 删除
 Status LinkedList_Delete(LinkedList *L, int i);
 
 // 获取某位置上的元素
 Status LinkedList_Get(LinkedList L, int i, ElemType *e);
 
+// 更新某位置上的元素
+Status LinkedList_Set(LinkedList *L, int i, ElemType e);
+
 // 查找某个元素的第一个出现位置
 int LinkedList_Find(LinkedList L, ElemType e);
+
+// 清空链表
+void LinkedList_Clear(LinkedList *L);
+
+// 返回长度
+int LinkedList_Length(LinkedList L);
+
+// 是否为空
+bool LinkedList_Is_Empty(LinkedList L);
 
 // 遍历
 void LinkedList_Traverse(LinkedList L);

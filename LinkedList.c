@@ -63,6 +63,17 @@ Status LinkedList_Insert(LinkedList *L, int i, ElemType e)
 }
 
 /*
+ * Function     : 插入第一个元素
+ * Description  :
+ * In           : 链表指针，待插入元素
+ * Out          : 状态
+ */
+Status LinkedList_InsertFirst(LinkedList *L, ElemType e)
+{
+    return LinkedList_Insert(L, 0, e);
+}
+
+/*
  * Function     : 删除
  * Description  : 在合法的位置[0, len]删除元素
  * In           : 链表指针，位置
@@ -120,6 +131,45 @@ Status LinkedList_Get(LinkedList L, int i, ElemType *e)
 }
 
 /*
+ * Function     : 更新
+ * Description  : 在合法的位置[0, len]更新元素的值
+ * In           : 链表指针，位置，更新的元素值
+ * Out          : 状态
+ */
+Status LinkedList_Set(LinkedList *L, int i, ElemType e)
+{
+    // 指向第一个结点
+    Node *p = L->head->next;
+    int j = 0;
+
+    // 直到位置i
+    while(p && j < i)
+    {
+        p = p->next;
+        ++j;
+    }
+
+    // 第i个元素不存在或i不合法
+    if (!p || j > i) return OUT_OF_RANGE;
+
+    p->data = e;
+
+    return OK;
+}
+
+/*
+ * Function     : 清空链表
+ * Description  :
+ * In           : 链表指针
+ * Out          :
+ */
+void LinkedList_Clear(LinkedList *L)
+{
+    while (L->len > 0)
+        LinkedList_Delete(L, 0);
+}
+
+/*
  * Function     : 查找
  * Description  : 在合法的位置[0, len]查找元素的值，并返回位置
  * In           : 链表指针，待查找的元素
@@ -141,6 +191,28 @@ int LinkedList_Find(LinkedList L, ElemType e)
     if (!p) return -1;
 
     return j;
+}
+
+/*
+ * Function     : 返回长度
+ * Description  :
+ * In           : 链表
+ * Out          : 长度
+ */
+int LinkedList_Length(LinkedList L)
+{
+    return L.len;
+}
+
+/*
+ * Function     : 链表是否为空
+ * Description  : 如果链表空则返回true，否则返回false
+ * In           : 链表
+ * Out          : bool
+ */
+bool LinkedList_Is_Empty(LinkedList L)
+{
+    return L.len == 0;
 }
 
 /*

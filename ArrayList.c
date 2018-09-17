@@ -167,7 +167,7 @@ void ArrayList_Clear(ArrayList *L)
  */
 bool ArrayList_Is_Empty(ArrayList L)
 {
-    return L.len ? true : false;
+    return L.len ? false : true;
 }
 
 /*
