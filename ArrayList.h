@@ -10,6 +10,7 @@
 #define ARRAYLIST_H_INCLUDED
 
 #include <stdbool.h>
+#include <time.h>
 #include "Status.h"
 
 typedef struct
@@ -51,5 +52,11 @@ int ArrayList_Length(ArrayList L);
 
 // 打印列表
 void ArrayList_Traverse(ArrayList L);
+
+// 随机建立n个元素的线性表
+Status Random_Create_ArrayList(ArrayList *L, int n);
+
+// 线性表演示
+void ArrayList_Sample();
 
 #endif // ARRAYLIST_H_INCLUDED

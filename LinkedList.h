@@ -10,6 +10,7 @@
 #define LINKEDLIST_H_INCLUDED
 
 #include <stdbool.h>
+#include <time.h>
 #include "Status.h"
 
 typedef struct Node
@@ -56,5 +57,11 @@ bool LinkedList_Is_Empty(LinkedList L);
 
 // 遍历
 void LinkedList_Traverse(LinkedList L);
+
+// 随机建立n个元素的链表
+Status Random_Create_LinkedList(LinkedList *L, int n);
+
+// 链表演示
+void LinkedList_Sample();
 
 #endif // LINKEDLIST_H_INCLUDED
