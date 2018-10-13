@@ -21,6 +21,7 @@ Status LinkedList_Init(LinkedList *L)
     // 分配头结点
     L->head = (Node *)malloc(sizeof(Node));
     if (!L->head) return ERROR;
+
     // 头结点的下一个结点为空
     L->head->next = NULL;
 
@@ -218,7 +219,7 @@ bool LinkedList_Is_Empty(LinkedList L)
 /*
  * Function     : 遍历
  * Description  : 从前往后依次打印元素及元素的关系
- * In           : 链表指针，位置，待插入元素
+ * In           : 链表
  * Out          : 状态
  */
 void LinkedList_Traverse(LinkedList L)

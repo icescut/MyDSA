@@ -9,6 +9,12 @@
 #include <stdlib.h>
 #include "AString.h"
 
+//检查一个字符是否是英文字母
+int isalpha( int ch )
+{
+
+}
+
 /*
  * Function     : 连接两个字符串
  * Description  :
